@@ -1,8 +1,10 @@
 package qa.guru;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
-import static qa.guru.RegistrationPage.open;
+import static data.TestData.*;
+import static pages.RegistrationPage.open;
 
 public class CheckFields extends BaseTest {
 
@@ -11,69 +13,69 @@ public class CheckFields extends BaseTest {
     @Test
     public void checkAllFieldsTest() {
         open();
-        registration.setFirstName("Иван")
-                .setLastName("Иванов")
-                .setEmail("lenin@mail.ru")
-                .selectGender("Male")
-                .setNumber("8911567349")
-                .selectDate("6", "August", "2024")
-                .selectSubjects("Hindi")
-                .selectHobbies("Sports")
-                .upploadPicture("google.avif")
-                .currentAddress("https://demoqa.com/automation-practice-form")
-                .selectState("Uttar Pradesh")
-                .selectCity("Agra").
-                clickButtonSubmit();
+        registration.setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(userEmail)
+                .selectGender(gender)
+                .setMobileNumber(mobileNumber)
+                .selectDate(day, month, year)
+                .selectSubjects(subjectsInput)
+                .selectHobbies(hobbie)
+                .upploadPicture(pictureAv)
+                .currentToAddress(currentAddress)
+                .selectState(uttarPradesh)
+                .selectCity(agra).
+                clickSubmitButton();
 
-        registration.checkResult("Student Name", "Иван Иванов")
-                .checkResult("Student Email", "lenin@mail.ru")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "8911567349")
-                .checkResult("Date of Birth", "6 August,2024")
-                .checkResult("Subjects", "Hindi")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "google.avif")
-                .checkResult("Address", "https://demoqa.com/automation-practice-form")
-                .checkResult("State and City", "Uttar Pradesh Agra");
+        registration.checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Student Email", userEmail)
+                .checkResult("Gender", gender)
+                .checkResult("Mobile", mobileNumber)
+                .checkResult("Date of Birth", day + " " + month + "," + year)
+                .checkResult("Subjects", subjectsInput)
+                .checkResult("Hobbies", hobbie)
+                .checkResult("Picture", pictureAv)
+                .checkResult("Address", currentAddress)
+                .checkResult("State and City", uttarPradesh + " " + agra);
     }
 
     @Test
     public void checkSmokeFieldsTest() {
         open();
-        registration.setFirstName("Иван")
-                .setLastName("Иванов")
-                .setNumber("8911567349")
-                .selectGender("Male")
-                .selectDate("6", "August", "2024")
-                .selectSubjects("Hindi")
-                .upploadPicture("google.avif")
-                .selectState("Uttar Pradesh")
-                .selectCity("Agra").
-                clickButtonSubmit();
+        registration.setFirstName(firstName)
+                .setLastName(lastName)
+                .setMobileNumber(mobileNumber)
+                .selectGender(gender)
+                .selectDate(day, month, year)
+                .selectSubjects(subjectsInput)
+                .upploadPicture(pictureAv)
+                .selectState(uttarPradesh)
+                .selectCity(agra).
+                clickSubmitButton();
 
-        registration.checkResult("Student Name", "Иван Иванов")
-                .checkResult("Mobile", "8911567349")
-                .checkResult("Gender", "Male")
-                .checkResult("Date of Birth", "6 August,2024")
-                .checkResult("Subjects", "Hindi")
-                .checkResult("Picture", "google.avif")
-                .checkResult("State and City", "Uttar Pradesh Agra");
+        registration.checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Mobile", mobileNumber)
+                .checkResult("Gender", gender)
+                .checkResult("Date of Birth", day + " " + month + "," + year)
+                .checkResult("Subjects", subjectsInput)
+                .checkResult("Picture", pictureAv)
+                .checkResult("State and City", uttarPradesh + " " + agra);
     }
 
     @Test
     public void checkAllFieldsNegativeTest() {
         open();
-        registration.setFirstName("@#")
-                .setLastName("^&")
-                .setNumber("0123789457")
-                .selectGender("Male")
-                .upploadPicture("google.txt")
-                .clickButtonSubmit();
+        registration.setFirstName(firstName)
+                .setLastName(lastName)
+                .setMobileNumber(mobileNumber)
+                .selectGender(gender)
+                .upploadPicture(pictureTxT)
+                .clickSubmitButton();
 
-        registration.checkResult("Student Name", "@# ^&")
-                .checkResult("Mobile", "0123789457")
-                .checkResult("Gender", "Male")
-                .checkResult("Picture", "google.txt")
+        registration.checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Mobile", mobileNumber)
+                .checkResult("Gender", gender)
+                .checkResult("Picture", pictureTxT)
                 .checkResult("Subject", " ")
                 .checkResult("State and City", " ")
                 .checkResult("Address", " ");

@@ -1,4 +1,4 @@
-package qa.guru;
+package pages;
 
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
@@ -23,6 +24,8 @@ public class RegistrationPage {
 
     public static void open() {
         Selenide.open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
     }
 
     public RegistrationPage setFirstName(String name) {
@@ -30,8 +33,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setLastName(String twoName) {
-        $(lastName).setValue(twoName);
+    public RegistrationPage setLastName(String lastName) {
+        $(lastName).setValue(lastName);
         return this;
     }
 
@@ -45,8 +48,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setNumber(String number) {
-        $(userNumber).setValue(number);
+    public RegistrationPage setMobileNumber(String mobile) {
+        $(userNumber).setValue(mobile);
         return this;
     }
 
@@ -61,8 +64,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage selectSubjects(String subjects) {
-        $(subjectsInput).setValue(subjects).pressEnter();
+    public RegistrationPage selectSubjects(String subject) {
+        $(subjectsInput).setValue(subject).pressEnter();
         return this;
     }
 
@@ -76,7 +79,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage currentAddress(String adress) {
+    public RegistrationPage currentToAddress(String adress) {
         $(currentAddress).setValue(adress);
         return this;
     }
@@ -93,7 +96,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public void clickButtonSubmit() {
+    public void clickSubmitButton() {
         $(submit).click();
     }
 
