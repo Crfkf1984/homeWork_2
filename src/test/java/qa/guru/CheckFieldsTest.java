@@ -23,10 +23,10 @@ public class CheckFieldsTest extends BaseTest {
                 .selectDate(day, month, year)
                 .selectSubject(subjectsInput)
                 .selectHobbie(hobbie)
-                .upploadPicture(pictureAv)
+                .upploadPicture(picture)
                 .setAddress(currentAddress)
                 .selectState(uttarPradesh)
-                .selectCity(agra).
+                .selectCity(needCity).
                 clickSubmitButton();
 
         registration.checkResult("Student Name", firstName + " " + lastName)
@@ -36,9 +36,9 @@ public class CheckFieldsTest extends BaseTest {
                 .checkResult("Date of Birth", day + " " + month + "," + year)
                 .checkResult("Subjects", subjectsInput)
                 .checkResult("Hobbies", hobbie)
-                .checkResult("Picture", pictureAv)
+                .checkResult("Picture", picture)
                 .checkResult("Address", currentAddress)
-                .checkResult("State and City", uttarPradesh + " " + agra);
+                .checkResult("State and City", uttarPradesh + " " + needCity);
     }
 
     @Test
@@ -50,9 +50,9 @@ public class CheckFieldsTest extends BaseTest {
                 .selectGender(gender)
                 .selectDate(day, month, year)
                 .selectSubject(subjectsInput)
-                .upploadPicture(pictureAv)
+                .upploadPicture(picture)
                 .selectState(uttarPradesh)
-                .selectCity(agra).
+                .selectCity(needCity).
                 clickSubmitButton();
 
         registration.checkResult("Student Name", firstName + " " + lastName)
@@ -60,8 +60,8 @@ public class CheckFieldsTest extends BaseTest {
                 .checkResult("Gender", gender)
                 .checkResult("Date of Birth", day + " " + month + "," + year)
                 .checkResult("Subjects", subjectsInput)
-                .checkResult("Picture", pictureAv)
-                .checkResult("State and City", uttarPradesh + " " + agra);
+                .checkResult("Picture", picture)
+                .checkResult("State and City", uttarPradesh + " " + needCity);
     }
 
     @Test
@@ -71,13 +71,13 @@ public class CheckFieldsTest extends BaseTest {
                 .setLastName(lastName)
                 .setMobileNumber(mobileNumber)
                 .selectGender(gender)
-                .upploadPicture(pictureTxT)
+                .upploadPicture(picture)
                 .clickSubmitButton();
 
         registration.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Mobile", mobileNumber)
                 .checkResult("Gender", gender)
-                .checkResult("Picture", pictureTxT)
+                .checkResult("Picture", picture)
                 .checkResult("Subject", " ")
                 .checkResult("State and City", " ")
                 .checkResult("Address", " ");

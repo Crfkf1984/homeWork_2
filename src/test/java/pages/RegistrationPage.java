@@ -1,12 +1,15 @@
 package pages;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
@@ -36,8 +39,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setLastName(String lastName) {
-        $(lastName).setValue(lastName);
+    public RegistrationPage setLastName(String valueName) {
+        $(lastName).setValue(valueName);
         return this;
     }
 
@@ -62,7 +65,9 @@ public class RegistrationPage {
         $(".react-datepicker__month-select").selectOption(month);
         $(".react-datepicker__year-select").click();
         $("select.react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--006.react-datepicker__day--today").click();
+        List<SelenideElement> list = $$(".react-datepicker__month div.react-datepicker__week div");
+        SelenideElement res = list.stream().filter(e -> e.getText().equals(day)).findFirst().get();
+        res.click();
 
         return this;
     }
@@ -93,9 +98,23 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage selectCity(String currentCity) {
+    public static String getCity(String currentState) {
+        String chooseCity;
+        if (currentState.equals("NCR")) {
+            chooseCity = new Faker().options().option("Delhi", "Gurgaon", "Noida");
+        } else if (currentState.equals("Uttar Pradesh")) {
+            chooseCity = new Faker().options().option("Agra", "Lucknow", "Merrut");
+        } else if (currentState.equals("Haryana")) {
+            chooseCity = new Faker().options().option("Kamal", "Panipat");
+        } else {
+            chooseCity = new Faker().options().option("Jaipur", "Jaiselmer");
+        }
+        return chooseCity;
+    }
+
+    public RegistrationPage selectCity(String needCity) {
         $(city).click();
-        $("#react-select-4-input").setValue(currentCity).pressEnter();
+        $("#react-select-4-input").setValue(needCity).pressEnter();
         return this;
     }
 

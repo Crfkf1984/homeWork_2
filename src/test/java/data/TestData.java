@@ -2,6 +2,8 @@ package data;
 
 import com.github.javafaker.Faker;
 
+import static pages.RegistrationPage.getCity;
+
 public class TestData {
 
     static Faker faker = new Faker();
@@ -10,15 +12,14 @@ public class TestData {
             lastName = faker.name().lastName(),
             userEmail = faker.internet().emailAddress(),
             mobileNumber = faker.number().digits(10),
-            subjectsInput = "Hindi",
-            gender = "Male",
-            hobbie = "Sports",
-            pictureAv = "google.avif",
-            pictureTxT = "google.txt",
+            subjectsInput = faker.options().option("Hindi", "History"),
+            gender = faker.options().option("Male", "Female", "Other"),
+            hobbie = faker.options().option("Sports", "Reading", "Music"),
+            picture = faker.options().option("google.txt", "google.avif"),
             currentAddress = faker.address().streetAddress(),
-            uttarPradesh = "Uttar Pradesh",
-            agra = "Agra",
-            day = "6",
-            month = "August",
-            year = "2024";
+            uttarPradesh = faker.options().option("Uttar Pradesh", "NCR", "Haryana", "Rejasthan"),
+            needCity = getCity(uttarPradesh),
+            day = String.valueOf(faker.date().birthday().getDay()),
+            month = faker.options().option("August", "September", "October"),
+            year = faker.options().option("2024", "2025", "1974");
 }
