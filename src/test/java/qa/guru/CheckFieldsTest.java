@@ -5,24 +5,26 @@ import pages.RegistrationPage;
 
 import static data.TestData.*;
 import static pages.RegistrationPage.open;
+import static pages.RegistrationPage.removeAdvertising;
 
-public class CheckFields extends BaseTest {
+public class CheckFieldsTest extends BaseTest {
 
     RegistrationPage registration = new RegistrationPage();
 
     @Test
     public void checkAllFieldsTest() {
         open();
+        removeAdvertising();
         registration.setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(userEmail)
                 .selectGender(gender)
                 .setMobileNumber(mobileNumber)
                 .selectDate(day, month, year)
-                .selectSubjects(subjectsInput)
-                .selectHobbies(hobbie)
+                .selectSubject(subjectsInput)
+                .selectHobbie(hobbie)
                 .upploadPicture(pictureAv)
-                .currentToAddress(currentAddress)
+                .setAddress(currentAddress)
                 .selectState(uttarPradesh)
                 .selectCity(agra).
                 clickSubmitButton();
@@ -47,7 +49,7 @@ public class CheckFields extends BaseTest {
                 .setMobileNumber(mobileNumber)
                 .selectGender(gender)
                 .selectDate(day, month, year)
-                .selectSubjects(subjectsInput)
+                .selectSubject(subjectsInput)
                 .upploadPicture(pictureAv)
                 .selectState(uttarPradesh)
                 .selectCity(agra).

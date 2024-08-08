@@ -10,20 +10,23 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
-    private String firstName = "#firstName";
-    private String lastName = "#lastName";
-    private String userEmail = "#userEmail";
-    private String userNumber = "#userNumber";
-    private String subjectsInput = "#subjectsInput";
-    private String uploadPicture = "#uploadPicture";
-    private String currentAddress = "#currentAddress";
-    private String state = "#state";
-    private String city = "#city";
-    private String dateOfBirthInput = "#dateOfBirthInput";
-    private String submit = "#submit";
+    private final String firstName = "#firstName";
+    private final String lastName = "#lastName";
+    private final String userEmail = "#userEmail";
+    private final String userNumber = "#userNumber";
+    private final String subjectsInput = "#subjectsInput";
+    private final String uploadPicture = "#uploadPicture";
+    private final String currentAddress = "#currentAddress";
+    private final String state = "#state";
+    private final String city = "#city";
+    private final String dateOfBirthInput = "#dateOfBirthInput";
+    private final String submit = "#submit";
 
     public static void open() {
         Selenide.open("/automation-practice-form");
+    }
+
+    public static void removeAdvertising() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
     }
@@ -64,12 +67,12 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage selectSubjects(String subject) {
+    public RegistrationPage selectSubject(String subject) {
         $(subjectsInput).setValue(subject).pressEnter();
         return this;
     }
 
-    public RegistrationPage selectHobbies(String hobbie) {
+    public RegistrationPage selectHobbie(String hobbie) {
         $(byText(hobbie)).click();
         return this;
     }
@@ -79,7 +82,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage currentToAddress(String adress) {
+    public RegistrationPage setAddress(String adress) {
         $(currentAddress).setValue(adress);
         return this;
     }
