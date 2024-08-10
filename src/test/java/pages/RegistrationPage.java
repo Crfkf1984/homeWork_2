@@ -13,17 +13,17 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
-    private final String firstName = "#firstName";
-    private final String lastName = "#lastName";
-    private final String userEmail = "#userEmail";
-    private final String userNumber = "#userNumber";
-    private final String subjectsInput = "#subjectsInput";
-    private final String uploadPicture = "#uploadPicture";
-    private final String currentAddress = "#currentAddress";
-    private final String state = "#state";
-    private final String city = "#city";
-    private final String dateOfBirthInput = "#dateOfBirthInput";
-    private final String submit = "#submit";
+    private final SelenideElement firstName = $("#firstName");
+    private final SelenideElement lastName = $("#lastName");
+    private final SelenideElement userEmail = $("#userEmail");
+    private final SelenideElement userNumber = $("#userNumber");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement uploadPicture = $("#uploadPicture");
+    private final SelenideElement currentAddress = $("#currentAddress");
+    private final SelenideElement state = $("#state");
+    private final SelenideElement city = $("#city");
+    private final SelenideElement dateOfBirthInput = $("#dateOfBirthInput");
+    private final SelenideElement submit = $("#submit");
 
     public static void open() {
         Selenide.open("/automation-practice-form");
@@ -96,20 +96,6 @@ public class RegistrationPage {
         $(state).click();
         $("#react-select-3-input").setValue(stateCity).pressEnter();
         return this;
-    }
-
-    public static String getCity(String currentState) {
-        String chooseCity;
-        if (currentState.equals("NCR")) {
-            chooseCity = new Faker().options().option("Delhi", "Gurgaon", "Noida");
-        } else if (currentState.equals("Uttar Pradesh")) {
-            chooseCity = new Faker().options().option("Agra", "Lucknow", "Merrut");
-        } else if (currentState.equals("Haryana")) {
-            chooseCity = new Faker().options().option("Kamal", "Panipat");
-        } else {
-            chooseCity = new Faker().options().option("Jaipur", "Jaiselmer");
-        }
-        return chooseCity;
     }
 
     public RegistrationPage selectCity(String needCity) {

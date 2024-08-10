@@ -2,8 +2,6 @@ package data;
 
 import com.github.javafaker.Faker;
 
-import static pages.RegistrationPage.getCity;
-
 public class TestData {
 
     static Faker faker = new Faker();
@@ -22,4 +20,18 @@ public class TestData {
             day = String.valueOf(faker.date().birthday().getDay()),
             month = faker.options().option("August", "September", "October"),
             year = faker.options().option("2024", "2025", "1974");
+
+    private static String getCity(String currentState) {
+        String chooseCity;
+        if (currentState.equals("NCR")) {
+            chooseCity = new Faker().options().option("Delhi", "Gurgaon", "Noida");
+        } else if (currentState.equals("Uttar Pradesh")) {
+            chooseCity = new Faker().options().option("Agra", "Lucknow", "Merrut");
+        } else if (currentState.equals("Haryana")) {
+            chooseCity = new Faker().options().option("Kamal", "Panipat");
+        } else {
+            chooseCity = new Faker().options().option("Jaipur", "Jaiselmer");
+        }
+        return chooseCity;
+    }
 }
