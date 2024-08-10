@@ -1,5 +1,6 @@
 package qa.guru;
 
+import data.TestData;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -10,74 +11,75 @@ import static pages.RegistrationPage.removeAdvertising;
 public class CheckFieldsTest extends BaseTest {
 
     RegistrationPage registration = new RegistrationPage();
+    TestData data = new TestData();
 
     @Test
     public void checkAllFieldsTest() {
         open();
         removeAdvertising();
-        registration.setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .selectGender(gender)
-                .setMobileNumber(mobileNumber)
-                .selectDate(day, month, year)
-                .selectSubject(subjectsInput)
-                .selectHobbie(hobbie)
-                .upploadPicture(picture)
-                .setAddress(currentAddress)
-                .selectState(uttarPradesh)
-                .selectCity(needCity).
+        registration.setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setEmail(data.userEmail)
+                .selectGender(data.gender)
+                .setMobileNumber(data.mobileNumber)
+                .selectDate(data.day, data.month, data.year)
+                .selectSubject(data.subjectsInput)
+                .selectHobbie(data.hobbie)
+                .upploadPicture(data.picture)
+                .setAddress(data.currentAddress)
+                .selectState(data.uttarPradesh)
+                .selectCity(data.needCity).
                 clickSubmitButton();
 
-        registration.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", mobileNumber)
-                .checkResult("Date of Birth", day + " " + month + "," + year)
-                .checkResult("Subjects", subjectsInput)
-                .checkResult("Hobbies", hobbie)
-                .checkResult("Picture", picture)
-                .checkResult("Address", currentAddress)
-                .checkResult("State and City", uttarPradesh + " " + needCity);
+        registration.checkResult("Student Name", data.firstName + " " + data.lastName)
+                .checkResult("Student Email", data.userEmail)
+                .checkResult("Gender", data.gender)
+                .checkResult("Mobile", data.mobileNumber)
+                .checkResult("Date of Birth", data.day + " " + data.month + "," + data.year)
+                .checkResult("Subjects", data.subjectsInput)
+                .checkResult("Hobbies", data.hobbie)
+                .checkResult("Picture", data.picture)
+                .checkResult("Address", data.currentAddress)
+                .checkResult("State and City", data.uttarPradesh + " " + data.needCity);
     }
 
     @Test
     public void checkSmokeFieldsTest() {
         open();
-        registration.setFirstName(firstName)
-                .setLastName(lastName)
-                .setMobileNumber(mobileNumber)
-                .selectGender(gender)
-                .selectDate(day, month, year)
-                .selectSubject(subjectsInput)
-                .upploadPicture(picture)
-                .selectState(uttarPradesh)
-                .selectCity(needCity).
+        registration.setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setMobileNumber(data.mobileNumber)
+                .selectGender(data.gender)
+                .selectDate(data.day, data.month, data.year)
+                .selectSubject(data.subjectsInput)
+                .upploadPicture(data.picture)
+                .selectState(data.uttarPradesh)
+                .selectCity(data.needCity).
                 clickSubmitButton();
 
-        registration.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Mobile", mobileNumber)
-                .checkResult("Gender", gender)
-                .checkResult("Date of Birth", day + " " + month + "," + year)
-                .checkResult("Subjects", subjectsInput)
-                .checkResult("Picture", picture)
-                .checkResult("State and City", uttarPradesh + " " + needCity);
+        registration.checkResult("Student Name", data.firstName + " " + data.lastName)
+                .checkResult("Mobile", data.mobileNumber)
+                .checkResult("Gender", data.gender)
+                .checkResult("Date of Birth", data.day + " " + data.month + "," + data.year)
+                .checkResult("Subjects", data.subjectsInput)
+                .checkResult("Picture", data.picture)
+                .checkResult("State and City", data.uttarPradesh + " " + data.needCity);
     }
 
     @Test
     public void checkAllFieldsNegativeTest() {
         open();
-        registration.setFirstName(firstName)
-                .setLastName(lastName)
-                .setMobileNumber(mobileNumber)
-                .selectGender(gender)
-                .upploadPicture(picture)
+        registration.setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setMobileNumber(data.mobileNumber)
+                .selectGender(data.gender)
+                .upploadPicture(data.picture)
                 .clickSubmitButton();
 
-        registration.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Mobile", mobileNumber)
-                .checkResult("Gender", gender)
-                .checkResult("Picture", picture)
+        registration.checkResult("Student Name", data.firstName + " " + data.lastName)
+                .checkResult("Mobile", data.mobileNumber)
+                .checkResult("Gender", data.gender)
+                .checkResult("Picture", data.picture)
                 .checkResult("Subject", " ")
                 .checkResult("State and City", " ")
                 .checkResult("Address", " ");

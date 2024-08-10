@@ -6,7 +6,7 @@ public class TestData {
 
     static Faker faker = new Faker();
 
-    public static String firstName = faker.name().firstName(),
+    public String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             userEmail = faker.internet().emailAddress(),
             mobileNumber = faker.number().digits(10),
