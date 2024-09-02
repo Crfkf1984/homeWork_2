@@ -1,6 +1,7 @@
 package qa.guru;
 
 import data.TestData;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -8,6 +9,7 @@ import static data.TestData.*;
 import static pages.RegistrationPage.open;
 import static pages.RegistrationPage.removeAdvertising;
 
+@Tag("super")
 public class CheckFieldsTest extends BaseTest {
 
     RegistrationPage registration = new RegistrationPage();
