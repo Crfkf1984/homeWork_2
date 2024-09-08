@@ -35,6 +35,18 @@ dependencies {
     )
 }
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -46,6 +58,8 @@ task super_test(type: Test) {
 
 }
 
-test {
-    useJUnitPlatform()
+task simple_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("simple")
+    }
 }

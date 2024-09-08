@@ -1,0 +1,1 @@
+{"uuid":"34ed6e99-cfb2-41f7-a099-eab484e9e880","name":"Тест проверяет авторизацию при неполном заполнении данных","children":["b9e36d47-e1d0-448a-82c7-03ca170d1353"],"befores":[{"name":"beforeEach","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1725482706233,"stop":1725482706233}],"afters":[],"start":1725482705959,"stop":1725482729987}

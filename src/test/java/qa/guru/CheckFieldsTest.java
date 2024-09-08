@@ -1,6 +1,7 @@
 package qa.guru;
 
 import data.TestData;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static com.codeborne.selenide.Selenide.webdriver;
+import static io.qameta.allure.Allure.attachment;
 import static io.qameta.allure.Allure.step;
 import static pages.RegistrationPage.open;
 import static pages.RegistrationPage.removeAdvertising;
@@ -24,7 +27,7 @@ public class CheckFieldsTest extends BaseTest {
     @Owner("catovich")
     @Severity(SeverityLevel.BLOCKER)
     public void checkAllFieldsTest() {
-
+      
         step("Открываем браузер", () -> {
             open();
         });
@@ -66,6 +69,7 @@ public class CheckFieldsTest extends BaseTest {
     @Owner("catovich")
     @Severity(SeverityLevel.BLOCKER)
     public void checkSmokeFieldsTest() {
+
 
         step("Открываем браузер", () -> {
             open();

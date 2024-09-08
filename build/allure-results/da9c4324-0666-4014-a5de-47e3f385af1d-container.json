@@ -1,0 +1,1 @@
+{"uuid":"da9c4324-0666-4014-a5de-47e3f385af1d","name":"Тест проверяет авторизацию пользователя","children":["deff16e0-246d-4517-84a3-c316ef2993c4"],"befores":[{"name":"beforeEach","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1725482281470,"stop":1725482281470}],"afters":[],"start":1725482281454,"stop":1725482303419}
